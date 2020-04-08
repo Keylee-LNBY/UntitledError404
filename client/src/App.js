@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
+import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
+import Game from "./pages/Game";
+import Login from "./pages/Login";
+import Score from "./pages/Score";
+
+// NavBar on top => used to click between "pages"
+// /game => Game 
+// /login => Login
+// /score => Score
+// ANYWHERE ELSE => Home
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <div className="container">
+        <Switch>
+          {/* you can only match ONE route inside */}
+          <Route exact path="/game" component={Game} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/Score" component={Score} />
+          {/* take home for anything else */}
+          <Route component={Home} />
+        </Switch>
+      </div>
+    </Router>
+
   );
 }
 
