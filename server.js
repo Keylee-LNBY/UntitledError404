@@ -5,6 +5,8 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const User = require("./models/userModel.js");
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,8 +19,34 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist"
+  process.env.MONGODB_URI || "mongodb://localhost/reactapp"
 );
+
+//post to DB
+// app.post("/submit", ({body}, res) => {
+//   const user = new User(body);
+//   user.setFullName();
+//   user.lastUpdatedDate();
+
+//   User.create(user)
+//     .then(dbUser => {
+//       res.json(dbUser);
+      
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
+
+// app.get("/user", (req, res) => {
+//   db.User.find({})
+//     .then(dbUser => {
+//       res.json(dbUser);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
 // Start the API server
 app.listen(PORT, function () {
