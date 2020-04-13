@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
+// import * as Spine from "../libs/pixi-spine-master/bin/pixi-spine";
 import { CustomPIXIComponent } from "react-pixi-fiber";
-import * as Spine from "../libs/pixi-spine-master/bin/pixi-spine";
+import * as Spine from "pixi-spine";
 
 // let app = new Application();
 
@@ -13,7 +14,7 @@ const Running = CustomPIXIComponent(
             {
                 stopGame,
                 setCurrentPlayerY,
-                apply,
+                app,
                 spineData,
                 animation,
                 status,
@@ -66,7 +67,7 @@ const Running = CustomPIXIComponent(
             }
         }
     },
-    "PIXI.spine.Spine"
+    "theSpine"
 );
 
 export default Running;

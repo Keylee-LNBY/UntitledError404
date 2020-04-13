@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedSprite from "./components/AnimatedSprite";
+import AnimatedSprite from "../components/AnimatedSprite";
 import { yAxisItem, itemWidth } from "./gameOptions";
 import { yAxisItem } from "./gameOptions";
 
