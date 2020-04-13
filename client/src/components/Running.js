@@ -1,10 +1,8 @@
 import * as PIXI from "pixi.js";
-window.PIXI = PIXI;
-import "pixi-spine";
 import { CustomPIXIComponent } from "react-pixi-fiber";
+import * as Spine from "../libs/pixi-spine-master/bin/pixi-spine";
 
-let app = new PIXI.Application();
-
+// let app = new Application();
 
 const Running = CustomPIXIComponent(
     {
@@ -26,7 +24,7 @@ const Running = CustomPIXIComponent(
                 let player = null;
                 if (spineData !== oldProps.spineData) {
                     instance.removeChildren(0, instance.children.length);
-                    player = new PIXI.spine.Spine(spineData);
+                    player = new Spine(spineData);
                     player.state.setAnimation(0, animation, true);
                     instance.addChild(player);
                 } else {
@@ -68,7 +66,7 @@ const Running = CustomPIXIComponent(
             }
         }
     },
-    "Spine"
+    "PIXI.spine.Spine"
 );
 
 export default Running;
