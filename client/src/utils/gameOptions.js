@@ -5,10 +5,10 @@ let fixedPoint = 0;
 if (height >=320 && height <= 375) fixedPoint = -30;
 export const floorH = height * 210 / 600 * 0.8 + fixedPoint;
 
-export const yAxixFloor = height - floorH ;
+export const yAxisFloor = height - floorH ;
 
 export const playerX = Math.round(width / 3.5);
-export const playerY = yAxixFloor + 20;
+export const playerY = yAxisFloor + 20;
 
 if (height >=320 && height <= 375) fixedPoint = -0.05;
 
