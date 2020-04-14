@@ -17,8 +17,11 @@ router.post("/", (req, res) => {
             });
         } else {
             const newUser = new User({
+                firstName: firstName,
+                lastName: lastName,
+                // susername: username,
+                password: password,
                 email: email,
-                password: password
             });
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err);

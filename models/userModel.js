@@ -14,11 +14,11 @@ const UserSchema = new Schema({
     required: "Last Name is Required"
   },
 
-  username: {
-    type: String,
-    trim: true,
-    required: "Username is Required"
-  },
+  // username: {
+  //   type: String,
+  //   trim: true,
+  //   required: "Username is Required"
+  // },
 
   password: {
     type: String,
@@ -54,6 +54,28 @@ UserSchema.methods.lastUpdatedDate = function () {
 
   return this.lastUpdated;
 };
+
+userSchema.methods = {
+  checkPassword: function (inputPassword) {
+    return bcrypt.compareSync(inputPassword, this.password);
+  },
+  hashPassword: plainTextPassword => {
+    return bcrypt.hashSync(plainTextPassword, 10);
+  }
+};
+
+// Define hooks for pre-saving
+userSchema.pre("save", function (next) {
+  if (!this.password) {
+    console.log("models/userModel.js =======NO PASSWORD PROVIDED=======");
+    next();
+  } else {
+    console.log("models/userModel.js hashPassword in pre save");
+
+    this.password = this.hashPassword(this.password);
+    next();
+  }
+});
 
 const UserModel = mongoose.model("User", UserSchema)
 

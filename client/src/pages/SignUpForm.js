@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+// import CircularProgress from "@material-ui/core/CircularProgress";
+import API from "../utils/API";
+
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -40,13 +42,35 @@ const useStyles = makeStyles((theme) => ({
 
 const Register = () => {
   const classes = useStyles({});
-  const [formData, setFormData] = React.useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-  const [submitting, setSubmitting] = React.useState(false);
+  const [userInput, setUserInput] = useState({});
+
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setUserInput({ ...userInput, [name]: value });
+  };
+  // const [formData, setFormData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   password: "",
+  // });
+
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    if (userInput.firstName && userInput.lastName && userInput.email && userInput.password) {
+      API.register(userInput)
+        .then(res => {
+          console.log('res', res)
+          alert('You are now registered! Please login')
+          window.location.assign('/login')
+        })
+        .catch(e => {
+          console.log("error!", e);
+        });
+    }
+  };
+  // const [submitting, setSubmitting] = useState(false);
 
   return (
     <main className={classes.layout}>
@@ -71,10 +95,11 @@ const Register = () => {
             name="firstName"
             autoComplete="fname"
             autoFocus
-            defaultValue={formData.firstName}
-            onChange={(e) =>
-              setFormData({ ...formData, firstName: e.target.value })
-            }
+            defaultValue={userInput.firstName}
+            onChange={handleInputChange}
+          // {(e) =>
+          //   setUserInput({ ...userInput, firstName: e.target.value })
+          // }
           />
           <TextField
             margin="normal"
@@ -84,10 +109,11 @@ const Register = () => {
             label="Last Name"
             name="lastName"
             autoComplete="lname"
-            defaultValue={formData.lastName}
-            onChange={(e) =>
-              setFormData({ ...formData, lastName: e.target.value })
-            }
+            defaultValue={userInput.lastName}
+            onChange={handleInputChange}
+          // {(e) =>
+          //   setUserInput({ ...userInput, lastName: e.target.value })
+          // }
           />
           <TextField
             margin="normal"
@@ -97,10 +123,11 @@ const Register = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            defaultValue={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
+            defaultValue={userInput.email}
+            onChange={handleInputChange}
+          // {(e) =>
+          //   setUserInput({ ...userInput, email: e.target.value })
+          // }
           />
           <TextField
             margin="normal"
@@ -111,27 +138,28 @@ const Register = () => {
             type="password"
             id="password"
             autoComplete="new-password"
-            defaultValue={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
+            defaultValue={userInput.password}
+            onChange={handleInputChange}
+          // {(e) =>
+          //   setUserInput({ ...userInput, password: e.target.value })
+          // }
           />
           <Box mb={6}>
-            <Button
-              disabled={submitting}
+            <Button onClick={handleFormSubmit}
+              // disabled={handleFormSubmit}
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
             >
-              {submitting && (
+              {/* {handleFormSubmit && (
                 <CircularProgress
                   size={24}
                   className={classes.buttonProgress}
                 />
-              )}
-              {submitting ? "Registering..." : "Register"}
+              )} */}
+              Register
             </Button>
           </Box>
         </form>

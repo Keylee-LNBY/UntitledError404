@@ -11,6 +11,7 @@ router.post('/login', async (req, res) => {
 router.post('/signUp', async (req, res) => {
     const { firstName, lastName, email, password } = req.body
 
+
     return res.status(200).json({ success: true, data: null })
 });
 
