@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import { Sprite } from "react-pixi-fiber";
 import * as PIXI from "pixi.js";
-import { render } from "@inlet/react-pixi";
+// import { render } from "@inlet/react-pixi";
 
 class AnimatedSprite extends PureComponent {
     state = { x: 0 };

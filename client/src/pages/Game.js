@@ -42,7 +42,7 @@ export default ({
                 <GameBackground
                   app={app}
                   length={1003}
-                  texture="ground.jpg"
+                  texture="ground2.png"
                   y={GameOptions.yAxisFloor}
                   speed={15}
                 />

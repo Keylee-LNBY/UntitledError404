@@ -1,7 +1,7 @@
 import React from "react";
 import GithubLink from "./githubLink";
 
-export default ({ startGame, result }) => (
+export default ({ gameBegin, result }) => (
     <div className="Ending"><div>
     <h1>Untitled #404</h1>
         <div>
