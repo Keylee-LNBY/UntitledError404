@@ -1,18 +1,17 @@
 import React from "react";
 import AnimatedSprite from "../components/AnimatedSprite";
 import { yAxisItem, itemWidth } from "./gameOptions";
-import { yAxisItem } from "./gameOptions";
+// import { yAxisItem } from "./gameOptions";
 
 class Item extends React.Component {
     shouldComponentUpdate(nextProps) {
-    return nextProps.visible !== this.props.visible;
+        return nextProps.visible !== this.props.visible;
     }
-
 
     render() {
     const { app, visible, onChangeX } = this.props;
     return (
-        <AnimatedSprite
+            <AnimatedSprite
             app={app}
             length={800}
             res="item.png"

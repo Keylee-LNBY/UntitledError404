@@ -35,8 +35,6 @@ const Running = CustomPIXIComponent(
                 player.setData.setMix("jump", "running", 0.4);
                 player.state.setAnimation(0, "running", true);
 
-                app.stage.on("pointerdown", onTouchStart);
-
                 const onTouchStart = () => {
                     player.state.setAnimation(0, "jump", false);
                     player.state.addAnimation(0, "running", true, 0);
@@ -47,6 +45,8 @@ const Running = CustomPIXIComponent(
                         setCurrentPlayerY(player.position.y);
                     }, 500);
                 }
+
+                app.stage.on("pointerdown", onTouchStart);
 
                 if (animation !== oldProps.animation) {
                     player.state.setAnimation(0, animation, true);
