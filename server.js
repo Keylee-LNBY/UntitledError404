@@ -1,7 +1,15 @@
+require("dotenv").config();
+import { urlencoded, json } from "body-parser";
+import cookieParser from "cookie-parser";
+import passport from "passport";
+import { connectToDatabase } from "./models/connection";
+import router from "./router";
+import { initialiseAuthentication } from "./auth";
 const express = require("express");
 
 const mongoose = require("mongoose");
 const routes = require("./routes");
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -17,10 +25,25 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
+app.use(urlencoded({ extended: true }));
+app.use(json());
+app.use(cookieParser());
+
+app.use(passport.initialize());
+
+App.prepare().then(async () => {
+  app.get("*", (req, res) => {
+    return handle(req, res);
+  });
+});
+
+await connectToDatabase();
+
+router(app);
+initialiseAuthentication(app);
+
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactapp"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactapp");
 
 //post to DB
 // app.post("/submit", ({body}, res) => {
@@ -31,7 +54,7 @@ mongoose.connect(
 //   User.create(user)
 //     .then(dbUser => {
 //       res.json(dbUser);
-      
+
 //     })
 //     .catch(err => {
 //       res.json(err);
