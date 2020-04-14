@@ -1,4 +1,11 @@
+require("dotenv").config();
 const express = require("express");
+import { urlencoded, json } from "body-parser";
+import cookieParser from "cookie-parser";
+import passport from "passport";
+import router from "./router";
+import { initialiseAuthentication } from "./auth";
+import { connectToDatabase } from "./database/connection"
 
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -22,6 +29,27 @@ mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/reactapp"
 );
 
+nextApp.prepare().then(async () => {
+
+  // Code omitted for brevity
+
+  app.get("*", (req, res) => {
+    return handle(req, res)
+  })
+
+  await connectToDatabase();
+});
+
+
+app.use(urlencoded({ extended: true }));
+app.use(json());
+app.use(cookieParser());
+
+app.use(passport.initialize());
+
+router(app);
+initialiseAuthentication(app);
+
 //post to DB
 // app.post("/submit", ({body}, res) => {
 //   const user = new User(body);
@@ -31,7 +59,7 @@ mongoose.connect(
 //   User.create(user)
 //     .then(dbUser => {
 //       res.json(dbUser);
-      
+
 //     })
 //     .catch(err => {
 //       res.json(err);
