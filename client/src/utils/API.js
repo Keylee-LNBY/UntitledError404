@@ -1,21 +1,21 @@
 import axios from "axios";
 
 export default {
-    // Gets all todos
-    //   getTodos: function() {
-    //     return axios.get("/api/todos/");
-    //   },
-    //   // Gets the todo with the given id
-    //   getTodo: function(id) {
-    //     return axios.get("/api/todos/" + id);
-    //   },
-    //   // Saves a todo to the database
-    //   saveTodo: function(todoData) {
-    //     return axios.post("/api/todos", todoData);
-    //   },
-    //   updateTodo: function(todoData) {
-    //     return axios.put("/api/todos/" + todoData._id, todoData);
-    //   },
+    // Gets all scores
+    getScores: function() {
+        return axios.get("/api/highscore/");
+      },
+      // Gets the score with the given id
+      getScore: function(id) {
+        return axios.get("/api/highscore/" + id);
+      },
+      // Saves a Score to the database
+      saveScore: function(scoreData) {
+        return axios.post("/api/highscore", scoreData);
+      },
+      updateScore: function(scoreData) {
+        return axios.put("/api/highscore/" + scoreData._id, scoreData);
+      },
 
     // register a user
     register: function (userInput) {
