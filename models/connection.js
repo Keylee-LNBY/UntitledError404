@@ -1,7 +1,7 @@
-import { connect, connection } from 'mongoose'
+const mongoose = require("mongoose");
 
 const connectToDatabase = async () =>
-    await connect(process.env.DB_CONNECTION_STRING || '', {
+    await mongoose.connect(process.env.DB_CONNECTION_STRING || '', {
         useFindAndModify: false,
         autoIndex: false, // Don't build indexes
         reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
@@ -12,4 +12,4 @@ const connectToDatabase = async () =>
         useNewUrlParser: true
     })
 
-export { connectToDatabase, connection }
+module.exports = { connectToDatabase };

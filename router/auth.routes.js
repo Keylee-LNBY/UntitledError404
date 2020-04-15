@@ -1,18 +1,18 @@
-import express from 'express'
+// const express = require('express');
 
-const router = express.Router()
+// const router = express.Router()
 
-router.post('/login', async (req, res) => {
-    const { email, password } = req.body
+// router.post('/login', async (req, res) => {
+//     const { email, password } = req.body
 
-    return res.status(200).json({ success: true, data })
-});
+//     return res.status(200).json({ success: true, data })
+// });
 
-router.post('/signUp', async (req, res) => {
-    const { firstName, lastName, email, password } = req.body
+// router.post('/signUp', async (req, res) => {
+//     const { firstName, lastName, email, password } = req.body
 
 
-    return res.status(200).json({ success: true, data: null })
-});
+//     return res.status(200).json({ success: true, data: null })
+// });
 
-export default router;
+// module.exports = router;

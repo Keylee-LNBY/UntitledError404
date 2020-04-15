@@ -3,10 +3,10 @@ const router = require("express").Router();
 const User = require("../../models/userModel");
 const passport = require("../../passport");
 
+// post route: /api/users
 router.post("/", (req, res) => {
-    console.log("user signup", req.body);
 
-    const { email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
     // ADD VALIDATION
     User.findOne({ email: email }, (err, user) => {
         if (err) {
@@ -19,7 +19,6 @@ router.post("/", (req, res) => {
             const newUser = new User({
                 firstName: firstName,
                 lastName: lastName,
-                // susername: username,
                 password: password,
                 email: email,
             });
@@ -47,6 +46,7 @@ router.post(
     function (req, res, next) {
         console.log("routes/userAuth.js, login, req.body: ");
         console.log(req.body);
+        console.log("next", next);
         next();
     },
     passport.authenticate("local"),

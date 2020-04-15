@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const db = require("../../models");
+
 // const highScoreRoutes = require("./highscore");
-const userRoutes = require("./users"); //call other api route users
+const userRoutes = require("./userAuth"); //use file userAuth when using userRoutes
 
 // High Score routes, now we're at /api/high score
 // router.use("/highscore", highScoreRoutes);

@@ -59,6 +59,7 @@ const Register = () => {
   const handleFormSubmit = e => {
     e.preventDefault();
     if (userInput.firstName && userInput.lastName && userInput.email && userInput.password) {
+      console.log("userInputsubmit", userInput);
       API.register(userInput)
         .then(res => {
           console.log('res', res)
@@ -71,6 +72,8 @@ const Register = () => {
     }
   };
   // const [submitting, setSubmitting] = useState(false);
+
+  console.log("user input", userInput)
 
   return (
     <main className={classes.layout}>

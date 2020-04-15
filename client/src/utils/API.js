@@ -19,24 +19,21 @@ export default {
 
     // register a user
     register: function (userInput) {
-        return axios.post("/api/userModel", {
-            email: userInput.email,
-            password: userInput.password
-        });
+        return axios.post("/api/users", userInput);
     },
     // login a user
     login: function (userInput) {
-        return axios.post("/api/userModel/login", {
+        return axios.post("/api/users/login", {
             email: userInput.email,
             password: userInput.password
         });
     },
     // logout a user
     logout: function () {
-        return axios.post("/api/userModel/logout");
+        return axios.post("/api/users/logout");
     },
     // see if user is logged in
     status: function () {
-        return axios.get('/api/userModel')
+        return axios.get('/api/users')
     }
 };

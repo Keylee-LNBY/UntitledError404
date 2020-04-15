@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import CircularProgress from "@material-ui/core/CircularProgress";
+// import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
@@ -50,8 +50,9 @@ const Login = () => {
     e.preventDefault();
     if (userInput.email && userInput.password) {
       API.login(userInput)
-        .then(() => {
-          window.location.assign("/todos");
+        .then((res) => {
+          console.log("res", res);
+          window.location.assign("/game");
         })
         .catch(e => {
           console.log("error!", e);
