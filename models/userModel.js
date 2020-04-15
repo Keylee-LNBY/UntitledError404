@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
   firstName: {
@@ -38,24 +39,24 @@ const UserSchema = new Schema({
     default: Date.now
   },
 
-  lastUpdated: Date,
+  // lastUpdated: Date,
 
-  fullName: String
+  // fullName: String
 });
 
-UserSchema.methods.setFullName = function () {
-  this.fullName = `${this.firstName} ${this.lastName}`;
+// UserSchema.methods.setFullName = function () {
+//   this.fullName = `${this.firstName} ${this.lastName}`;
 
-  return this.fullName;
-};
+//   return this.fullName;
+// };
 
-UserSchema.methods.lastUpdatedDate = function () {
-  this.lastUpdated = Date.now();
+// UserSchema.methods.lastUpdatedDate = function () {
+//   this.lastUpdated = Date.now();
 
-  return this.lastUpdated;
-};
+//   return this.lastUpdated;
+// };
 
-userSchema.methods = {
+UserSchema.methods = {
   checkPassword: function (inputPassword) {
     return bcrypt.compareSync(inputPassword, this.password);
   },
@@ -65,7 +66,7 @@ userSchema.methods = {
 };
 
 // Define hooks for pre-saving
-userSchema.pre("save", function (next) {
+UserSchema.pre("save", function (next) {
   if (!this.password) {
     console.log("models/userModel.js =======NO PASSWORD PROVIDED=======");
     next();
@@ -77,6 +78,6 @@ userSchema.pre("save", function (next) {
   }
 });
 
-const UserModel = mongoose.model("User", UserSchema)
+const User = mongoose.model("User", UserSchema)
 
-module.exports = UserModel;
+module.exports = User;
