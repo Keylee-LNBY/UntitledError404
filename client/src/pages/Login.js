@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import CircularProgress from "@material-ui/core/CircularProgress";
+// import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
+import API from "../utils/API"
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -36,10 +37,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginForm = () => {
+const Login = () => {
   const classes = useStyles({});
-  const [formData, setFormData] = React.useState({ email: "", password: "" });
-  const [submitting, setSubmitting] = React.useState(false);
+  const [userInput, setUserInput] = useState({});
+
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setUserInput({ ...userInput, [name]: value });
+  };
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    if (userInput.email && userInput.password) {
+      API.login(userInput)
+        .then((res) => {
+          console.log("res", res);
+          window.location.assign("/game");
+        })
+        .catch(e => {
+          console.log("error!", e);
+        });
+    }
+  };
+
+  // const [formData, setFormData] = React.useState({ email: "", password: "" });
+  // const [submitting, setSubmitting] = React.useState(false);
 
   return (
     <main className={classes.layout}>
@@ -67,10 +89,11 @@ const LoginForm = () => {
             name="email"
             autoComplete="email"
             autoFocus
-            defaultValue={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
+            defaultValue={userInput.email}
+            onChange={handleInputChange}
+          // {(e) =>
+          //   setFormData({ ...userInput, email: e.target.value })
+          // }
           />
           <TextField
             margin="normal"
@@ -81,27 +104,28 @@ const LoginForm = () => {
             type="password"
             id="password"
             autoComplete="current-password"
-            defaultValue={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
+            defaultValue={userInput.password}
+            onChange={handleInputChange}
+          // {(e) =>
+          //   setFormData({ ...userInput, password: e.target.value })
+          // }
           />
           <Box mb={6}>
-            <Button
-              disabled={submitting}
+            <Button onClick={handleFormSubmit}
+              // disabled={submitting}
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
             >
-              {submitting && (
+              {/* {submitting && (
                 <CircularProgress
                   size={24}
                   className={classes.buttonProgress}
                 />
-              )}
-              {submitting ? "Signing in..." : "Sign In"}
+              )} */}
+              Sign In
             </Button>
           </Box>
         </form>
@@ -110,4 +134,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Login;

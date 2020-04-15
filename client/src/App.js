@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,14 +7,30 @@ import Home from "./pages/Home";
 import Game from "./utils/gameStuff";
 import Login from "./pages/Login";
 import Score from "./pages/Score";
-import SignUpForm from "./pages/SignUpForm";
+import Register from "./pages/SignUpForm";
+import API from "./utils/API";
 
 // NavBar on top => used to click between "pages"
 // /game => Game z
 // /login => Login
 // /score => Score
 // ANYWHERE ELSE => Home
-const App = () => {
+
+function App() {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  // useEffect(() => {
+  //   API.status()
+  //     .then(res => {
+  //       if (res.data.user) {
+  //         setIsLoggedIn(true);
+  //       }
+  //     })
+  //     .catch(e => {
+  //       console.log('error', e)
+  //     })
+  // })
+
   return (
     <Router>
       <NavBar />
@@ -24,7 +40,7 @@ const App = () => {
           <Route exact path="/game" component={Game} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/score" component={Score} />
-          <Route exact path="/signUp" component={SignUpForm} />
+          <Route exact path="/signUp" component={Register} />
           {/* take home for anything else */}
           <Route component={Home} />
         </Switch>
