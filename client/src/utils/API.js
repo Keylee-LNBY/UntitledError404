@@ -25,7 +25,7 @@ export default {
     login: function (userInput) {
         console.log(userInput);
         return axios.post("/api/users/login", {
-            email: userInput.email,
+            username: userInput.username,
             password: userInput.password
         });
     },

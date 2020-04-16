@@ -28,7 +28,7 @@ const UserSchema = new Schema({
     validate: [({ length }) => length >= 6, "Password should be longer."]
   },
 
-  email: {
+  username: {
     type: String,
     unique: true,
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"]

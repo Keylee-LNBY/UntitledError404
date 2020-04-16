@@ -5,22 +5,22 @@ const passport = require("../../passport");
 
 // post route: /api/users
 router.post("/", (req, res) => {
-
-    const { firstName, lastName, email, password } = req.body;
+    console.log('req.body', req.body);
+    const { firstName, lastName, username, password } = req.body;
     // ADD VALIDATION
-    User.findOne({ email: email }, (err, user) => {
+    User.findOne({ username: username }, (err, user) => {
         if (err) {
             console.log("userAuth.js post error: ", err);
         } else if (user) {
             res.json({
-                error: `Sorry, already a user with the email: ${email}`
+                error: `Sorry, already a user with the username: ${username}`
             });
         } else {
             const newUser = new User({
                 firstName: firstName,
                 lastName: lastName,
                 password: password,
-                email: email,
+                username: username,
             });
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err);
@@ -41,7 +41,7 @@ router.get("/", (req, res, next) => {
     // console.log(req);
     console.log("req.user", req.user);
     console.log("req.body", req.body);
-    console.log("req.email", req.email);
+    console.log("req.user.username", req.user.username);
     console.log("req.password", req.password);
     if (req.user) {
         res.json({ user: req.user });

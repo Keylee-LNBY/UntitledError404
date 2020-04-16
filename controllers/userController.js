@@ -18,7 +18,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByEmail: function (req, res) {
-    db.User.findOne({ email: req.params.email })
+    db.User.findOne({ username: req.params.username })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   create: function (req, res, next) {
-    // console.log("got to create", req);
+    console.log("got to create", req);
 
     passport.authenticate("register", (err, user, info) => {
       if (err) {
@@ -47,13 +47,12 @@ module.exports = {
           const data = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email: req.body.email,
-            // username: user.username
+            username: user.username
           };
           console.log(data);
           User.findOne({
             where: {
-              email: data.email
+              username: data.username
             }
           }).then(user => {
             console.log(user);
@@ -61,7 +60,7 @@ module.exports = {
               .update({
                 firstName: data.firstName,
                 lastName: data.lastName,
-                email: data.email
+                username: data.username
               })
               .then(() => {
                 console.log("user created in db");

@@ -11,14 +11,14 @@ const userSeed = [
     firstName: "Jennifer",
     lastName: "Coolige",
     password: "password2",
-    email: "jenn@email.com",
+    username: "jenn@username.com",
     userCreated: new Date(Date.now())
   },
   {
     firstName: "James",
     lastName: "Dean",
     password: "password3",
-    email: "james@email.com",
+    username: "james@username.com",
     userCreated: new Date(Date.now())
   }
 ];
