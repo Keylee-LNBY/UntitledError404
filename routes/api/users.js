@@ -10,9 +10,7 @@ router.route("/")
 router
   .route("/:id")
   .get(usersController.findById)
-  // .post(usersController.login)
   .put(usersController.update)
   .delete(usersController.remove);
-// .post(usersController.login);
 
 module.exports = router;

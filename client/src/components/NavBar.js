@@ -1,7 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import API from "../utils/API";
 
-const NavBar = () => {
+const NavBar = (props) => {
+    const handleLogout = () => {
+        API.logout().then(res => {
+            window.location.assign("/");
+        });
+    };
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <Link className="navbar-brand" to="/">Scroll Game</Link>
@@ -19,12 +25,24 @@ const NavBar = () => {
                     <li className="nav-link">
                         <NavLink className="nav-link" to="/score" activeClassName="active">High Scores</NavLink>
                     </li>
-                    <li className="nav-link">
-                        <NavLink className="nav-link" to="/login" activeClassName="active">Login</NavLink>
-                    </li>
-                    <li className="nav-link">
-                        <NavLink className="nav-link" to="/signUp" activeClassName="active">Sign Up</NavLink>
-                    </li>
+
+                    {!props.isLoggedIn &&
+                        <React.Fragment>
+                            <li className="nav-link">
+                                <NavLink className="nav-link" to="/login" activeClassName="active">Login</NavLink>
+                            </li>
+                            <li className="nav-link">
+                                <NavLink className="nav-link" to="/signUp" activeClassName="active">Sign Up</NavLink>
+                            </li>
+                        </React.Fragment>
+                    }
+
+                    {props.isLoggedIn &&
+                        <li className="nav-link">
+                            <NavLink className="nav-link" to="/" activeClassName="active" onClick={handleLogout}>Logout</NavLink>
+                        </li>
+                    }
+
                 </ul>
             </div>
         </nav>
