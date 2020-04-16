@@ -28,6 +28,7 @@ module.exports = {
       successRedirect: "/",
       failureRedirect: "/login"
     });
+    console.log("user is logged in");
   },
 
   create: function (req, res, next) {

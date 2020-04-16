@@ -30,11 +30,6 @@ router.post("/", (req, res) => {
     });
 });
 
-// router.route("/")
-//     .get(userController.findByEmail);
-
-// router.route("/login")
-//     .post(userController.login);
 
 router.get("/", (req, res, next) => {
     console.log("===== user!!======");

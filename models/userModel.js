@@ -15,12 +15,6 @@ const UserSchema = new Schema({
     required: "Last Name is Required"
   },
 
-  // username: {
-  //   type: String,
-  //   trim: true,
-  //   required: "Username is Required"
-  // },
-
   password: {
     type: String,
     trim: true,
@@ -39,22 +33,9 @@ const UserSchema = new Schema({
     default: Date.now
   },
 
-  // lastUpdated: Date,
 
-  // fullName: String
 });
 
-// UserSchema.methods.setFullName = function () {
-//   this.fullName = `${this.firstName} ${this.lastName}`;
-
-//   return this.fullName;
-// };
-
-// UserSchema.methods.lastUpdatedDate = function () {
-//   this.lastUpdated = Date.now();
-
-//   return this.lastUpdated;
-// };
 
 UserSchema.methods = {
   checkPassword: function (inputPassword) {
