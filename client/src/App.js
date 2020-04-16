@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Score from "./pages/Score";
 import Register from "./pages/SignUpForm";
 import API from "./utils/API";
+import Bubbles from "./components/Bubbles";
 
 // NavBar on top => used to click between "pages"
 // /game => Game 
@@ -33,6 +34,8 @@ function App() {
 
   return (
     <Router>
+      <Bubbles>
+      </Bubbles>
       <NavBar isLoggedIn={isLoggedIn} />
       <div className="container">
         <Switch>

@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
-import API from "../utils/API"
+import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
