@@ -1,5 +1,5 @@
 const router = require("express").Router();
-// const userController = require("../../controllers/userController");
+const userController = require("../../controllers/userController");
 const User = require("../../models/userModel");
 const passport = require("../../passport");
 
@@ -30,12 +30,22 @@ router.post("/", (req, res) => {
     });
 });
 
+// router.route("/")
+//     .get(userController.findByEmail);
+
+// router.route("/login")
+//     .post(userController.login);
 
 router.get("/", (req, res, next) => {
     console.log("===== user!!======");
-    console.log(req.user);
+    // console.log(req);
+    console.log("req.user", req.user);
+    console.log("req.body", req.body);
+    console.log("req.email", req.email);
+    console.log("req.password", req.password);
     if (req.user) {
         res.json({ user: req.user });
+        console.log(req.user);
     } else {
         res.json({ user: null });
     }
@@ -46,6 +56,7 @@ router.post(
     function (req, res, next) {
         console.log("routes/userAuth.js, login, req.body: ");
         console.log(req.body);
+        console.log("req.user", req.user);
         console.log("next", next);
         next();
     },
@@ -53,7 +64,7 @@ router.post(
     (req, res) => {
         console.log("logged in", req.user);
         var userInfo = {
-            email: req.user.email
+            username: req.user.username
         };
         res.send(userInfo);
     }

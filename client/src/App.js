@@ -17,27 +17,29 @@ import API from "./utils/API";
 // ANYWHERE ELSE => Home
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  // useEffect(() => {
-  //   API.status()
-  //     .then(res => {
-  //       if (res.data.user) {
-  //         setIsLoggedIn(true);
-  //       }
-  //     })
-  //     .catch(e => {
-  //       console.log('error', e)
-  //     })
-  // })
+  useEffect(() => {
+    API.status()
+      .then(res => {
+        if (res.data.user) {
+          setIsLoggedIn(true);
+        }
+      })
+      .catch(e => {
+        console.log('error', e)
+      })
+  })
 
   return (
     <Router>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} />
       <div className="container">
         <Switch>
           {/* you can only match ONE route inside */}
-          <Route exact path="/game" component={Game} />
+          <Route exact path="/game">
+            <Game isLoggedIn={isLoggedIn} />
+          </Route>
           <Route exact path="/login" component={Login} />
           <Route exact path="/score" component={Score} />
           <Route exact path="/signUp" component={Register} />

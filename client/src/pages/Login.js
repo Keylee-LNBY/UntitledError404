@@ -52,7 +52,7 @@ const Login = () => {
       API.login(userInput)
         .then((res) => {
           console.log("res", res);
-          window.location.assign("/game");
+          window.location.assign("/");
         })
         .catch(e => {
           console.log("error!", e);

@@ -5,13 +5,14 @@ const usersController = require("../../controllers/userController");
 router.route("/")
   .get(usersController.findAll)
   .post(usersController.create)
-  .post(usersController.login);
 
 // Matches with "/api/users/:id"
 router
   .route("/:id")
   .get(usersController.findById)
+  // .post(usersController.login)
   .put(usersController.update)
   .delete(usersController.remove);
+// .post(usersController.login);
 
 module.exports = router;
