@@ -4,15 +4,8 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
+import ScoresList from "../components/scoresTable";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const Score = () => {
   const classes = useStyles();
 
@@ -41,27 +33,22 @@ const Score = () => {
           <Paper className={classes.paper}>Scores:</Paper>
         </Grid>
         <Grid item xs={6} sm={6}>
-          <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          <Paper className={classes.paper}>Your Score:</Paper>
         </Grid>
         <Grid item xs={6} sm={6}>
-          <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          <Paper className={classes.paper}>High Score:</Paper>
         </Grid>
-        <Grid item xs={6} sm={3}>
+        {/* <ScoreList>`${res.score}`</ScoreList> */}
+
+
+        {/* <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}>xs=6 sm=3</Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Grid item xs container direction="row" alignItems="stretch">
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Grid item xs container direction="row" alignItems="stretch">
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-        </Grid>
+        </Grid> */}
+
+
       </Grid>
     </div>
   );
