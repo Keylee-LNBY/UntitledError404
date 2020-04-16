@@ -2,20 +2,20 @@ import axios from "axios";
 
 export default {
     // Gets all scores
-    getScores: function() {
+    getScores: function () {
         return axios.get("/api/highscore/");
-      },
-      // Gets the score with the given id
-      getScore: function(id) {
+    },
+    // Gets the score with the given id
+    getScore: function (id) {
         return axios.get("/api/highscore/" + id);
-      },
-      // Saves a Score to the database
-      saveScore: function(scoreData) {
+    },
+    // Saves a Score to the database
+    saveScore: function (scoreData) {
         return axios.post("/api/highscore", scoreData);
-      },
-      updateScore: function(scoreData) {
+    },
+    updateScore: function (scoreData) {
         return axios.put("/api/highscore/" + scoreData._id, scoreData);
-      },
+    },
 
     // register a user
     register: function (userInput) {
@@ -23,8 +23,9 @@ export default {
     },
     // login a user
     login: function (userInput) {
+        console.log(userInput);
         return axios.post("/api/users/login", {
-            email: userInput.email,
+            username: userInput.username,
             password: userInput.password
         });
     },

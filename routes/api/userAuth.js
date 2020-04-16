@@ -1,26 +1,26 @@
 const router = require("express").Router();
-// const userController = require("../../controllers/userController");
+const userController = require("../../controllers/userController");
 const User = require("../../models/userModel");
 const passport = require("../../passport");
 
 // post route: /api/users
 router.post("/", (req, res) => {
-
-    const { firstName, lastName, email, password } = req.body;
+    console.log('req.body', req.body);
+    const { firstName, lastName, username, password } = req.body;
     // ADD VALIDATION
-    User.findOne({ email: email }, (err, user) => {
+    User.findOne({ username: username }, (err, user) => {
         if (err) {
             console.log("userAuth.js post error: ", err);
         } else if (user) {
             res.json({
-                error: `Sorry, already a user with the email: ${email}`
+                error: `Sorry, already a user with the username: ${username}`
             });
         } else {
             const newUser = new User({
                 firstName: firstName,
                 lastName: lastName,
                 password: password,
-                email: email,
+                username: username,
             });
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err);
@@ -30,12 +30,22 @@ router.post("/", (req, res) => {
     });
 });
 
+// router.route("/")
+//     .get(userController.findByEmail);
+
+// router.route("/login")
+//     .post(userController.login);
 
 router.get("/", (req, res, next) => {
     console.log("===== user!!======");
-    console.log(req.user);
+    // console.log(req);
+    console.log("req.user", req.user);
+    console.log("req.body", req.body);
+    console.log("req.user.username", req.user.username);
+    console.log("req.password", req.password);
     if (req.user) {
         res.json({ user: req.user });
+        console.log(req.user);
     } else {
         res.json({ user: null });
     }
@@ -46,6 +56,7 @@ router.post(
     function (req, res, next) {
         console.log("routes/userAuth.js, login, req.body: ");
         console.log(req.body);
+        console.log("req.user", req.user);
         console.log("next", next);
         next();
     },
@@ -53,7 +64,7 @@ router.post(
     (req, res) => {
         console.log("logged in", req.user);
         var userInfo = {
-            email: req.user.email
+            username: req.user.username
         };
         res.send(userInfo);
     }

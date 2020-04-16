@@ -51,14 +51,14 @@ const Register = () => {
   // const [formData, setFormData] = useState({
   //   firstName: "",
   //   lastName: "",
-  //   email: "",
+  //   username: "",
   //   password: "",
   // });
 
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    if (userInput.firstName && userInput.lastName && userInput.email && userInput.password) {
+    if (userInput.firstName && userInput.lastName && userInput.username && userInput.password) {
       console.log("userInputsubmit", userInput);
       API.register(userInput)
         .then(res => {
@@ -122,14 +122,14 @@ const Register = () => {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            defaultValue={userInput.email}
+            id="username"
+            label="username"
+            name="username"
+            autoComplete="username"
+            defaultValue={userInput.username}
             onChange={handleInputChange}
           // {(e) =>
-          //   setUserInput({ ...userInput, email: e.target.value })
+          //   setUserInput({ ...userInput, username: e.target.value })
           // }
           />
           <TextField

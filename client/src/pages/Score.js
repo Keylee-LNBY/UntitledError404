@@ -16,59 +16,56 @@ import Avatar from '@material-ui/core/Avatar';
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      margin: 'auto',
-      color: theme.palette.text.secondary,
-    },
-    inline:{
-        display:'inline',
-    },
-  }));
-  
-    const classes = useStyles();
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    margin: 'auto',
+    color: theme.palette.text.secondary,
+  },
+  inline: {
+    display: 'inline',
+  },
+}));
 
-    return (
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>Scores:</Paper>
-            </Grid>
-            <Grid item xs={6} sm={6}>
-              <Paper className={classes.paper}>xs=12 sm=6</Paper>
-            </Grid>
-            <Grid item xs={6} sm={6}>
-              <Paper className={classes.paper}>xs=12 sm=6</Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Paper className={classes.paper}>xs=6 sm=3</Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <Paper className={classes.paper}>xs=6 sm=3</Paper>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-                <Grid item xs container direction="row" alignItems="stretch">
-                    <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                </Grid>
-            </Grid>
-            <Grid item xs={6} sm={3}>
-            <Grid item xs container direction="row" alignItems="stretch">
-                    <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                </Grid>
-            </Grid>
+
+const Score = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>Scores:</Paper>
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <Paper className={classes.paper}>xs=12 sm=6</Paper>
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <Paper className={classes.paper}>xs=12 sm=6</Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>xs=6 sm=3</Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>xs=6 sm=3</Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Grid item xs container direction="row" alignItems="stretch">
+            <Paper className={classes.paper}>xs=6 sm=3</Paper>
           </Grid>
-        </div>
-      );
-    }
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Grid item xs container direction="row" alignItems="stretch">
+            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          </Grid>
+        </Grid>
+      </Grid>
+    </div>
+  );
+}
 
-// const Score = () => {
-//     return (
-//         <h2>Scores:</h2>
-//     )
-// };
 
-// export default Score;
+export default Score;

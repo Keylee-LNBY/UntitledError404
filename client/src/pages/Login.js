@@ -48,11 +48,11 @@ const Login = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    if (userInput.email && userInput.password) {
+    if (userInput.username && userInput.password) {
       API.login(userInput)
         .then((res) => {
           console.log("res", res);
-          window.location.assign("/game");
+          window.location.assign("/");
         })
         .catch(e => {
           console.log("error!", e);
@@ -60,7 +60,7 @@ const Login = () => {
     }
   };
 
-  // const [formData, setFormData] = React.useState({ email: "", password: "" });
+  // const [formData, setFormData] = React.useState({ username: "", password: "" });
   // const [submitting, setSubmitting] = React.useState(false);
 
   return (
@@ -84,15 +84,15 @@ const Login = () => {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="username "
+            name="username"
+            autoComplete="username"
             autoFocus
-            defaultValue={userInput.email}
+            defaultValue={userInput.username}
             onChange={handleInputChange}
           // {(e) =>
-          //   setFormData({ ...userInput, email: e.target.value })
+          //   setFormData({ ...userInput, username: e.target.value })
           // }
           />
           <TextField
