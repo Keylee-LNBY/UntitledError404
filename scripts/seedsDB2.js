@@ -1,19 +1,25 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
+mongoose.connect(
+    process.env.MONGODB_URI ||
+    "mongodb://localhost/reactapp"
+);
+
 const scoreSeed = [
     {
-        user: "User",
+        username: "User",
         score: [12, 15, 54],
         date: new Date(Date.now())
     },
     {
-        user: "User",
+        username: "User",
         score: [13, 5, 60],
         date: new Date(Date.now())
     },
 
 ];
+console.log(scoreSeed);
 
 db.Score.remove({})
     .then(() => db.Score.collection.insertMany(scoreSeed))

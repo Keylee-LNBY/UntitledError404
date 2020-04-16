@@ -3,18 +3,18 @@ import axios from "axios";
 export default {
     // Gets all scores
     getScores: function () {
-        return axios.get("/api/highscore/");
+        return axios.get("/api/score/");
     },
     // Gets the score with the given id
     getScore: function (id) {
-        return axios.get("/api/highscore/" + id);
+        return axios.get("/api/score/" + id);
     },
     // Saves a Score to the database
     saveScore: function (scoreData) {
-        return axios.post("/api/highscore", scoreData);
+        return axios.post("/api/score", scoreData);
     },
     updateScore: function (scoreData) {
-        return axios.put("/api/highscore/" + scoreData._id, scoreData);
+        return axios.put("/api/score/" + scoreData._id, scoreData);
     },
 
     // register a user
