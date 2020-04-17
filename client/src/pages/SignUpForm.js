@@ -76,87 +76,88 @@ const Register = () => {
   console.log("user input", userInput)
 
   return (
-    <main className={classes.layout}>
-      <Paper className={classes.paper} elevation={2}>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-        >
-          <Typography component="h1" variant="h4" gutterBottom>
-            Register
+    <div classname="container">
+      <main className={classes.layout}>
+        <Paper className={classes.paper} elevation={2}>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Typography component="h1" variant="h4" gutterBottom>
+              Register
           </Typography>
-        </Box>
-        <form method="post" className={classes.form} noValidate>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="firstName"
-            label="First Name"
-            name="firstName"
-            autoComplete="fname"
-            autoFocus
-            defaultValue={userInput.firstName}
-            onChange={handleInputChange}
-          // {(e) =>
-          //   setUserInput({ ...userInput, firstName: e.target.value })
-          // }
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="lastName"
-            label="Last Name"
-            name="lastName"
-            autoComplete="lname"
-            defaultValue={userInput.lastName}
-            onChange={handleInputChange}
-          // {(e) =>
-          //   setUserInput({ ...userInput, lastName: e.target.value })
-          // }
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="username"
-            label="username"
-            name="username"
-            autoComplete="username"
-            defaultValue={userInput.username}
-            onChange={handleInputChange}
-          // {(e) =>
-          //   setUserInput({ ...userInput, username: e.target.value })
-          // }
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="new-password"
-            defaultValue={userInput.password}
-            onChange={handleInputChange}
-          // {(e) =>
-          //   setUserInput({ ...userInput, password: e.target.value })
-          // }
-          />
-          <Box mb={6}>
-            <Button onClick={handleFormSubmit}
-              // disabled={handleFormSubmit}
-              type="submit"
+          </Box>
+          <form method="post" className={classes.form} noValidate>
+            <TextField
+              margin="normal"
+              required
               fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              {/* {handleFormSubmit && (
+              id="firstName"
+              label="First Name"
+              name="firstName"
+              autoComplete="fname"
+              autoFocus
+              defaultValue={userInput.firstName}
+              onChange={handleInputChange}
+            // {(e) =>
+            //   setUserInput({ ...userInput, firstName: e.target.value })
+            // }
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="lastName"
+              label="Last Name"
+              name="lastName"
+              autoComplete="lname"
+              defaultValue={userInput.lastName}
+              onChange={handleInputChange}
+            // {(e) =>
+            //   setUserInput({ ...userInput, lastName: e.target.value })
+            // }
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="username"
+              name="username"
+              autoComplete="username"
+              defaultValue={userInput.username}
+              onChange={handleInputChange}
+            // {(e) =>
+            //   setUserInput({ ...userInput, username: e.target.value })
+            // }
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="new-password"
+              defaultValue={userInput.password}
+              onChange={handleInputChange}
+            // {(e) =>
+            //   setUserInput({ ...userInput, password: e.target.value })
+            // }
+            />
+            <Box mb={6}>
+              <Button onClick={handleFormSubmit}
+                // disabled={handleFormSubmit}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                {/* {handleFormSubmit && (
                 <CircularProgress
                   size={24}
                   className={classes.buttonProgress}
@@ -164,10 +165,11 @@ const Register = () => {
               )} */}
               Register
             </Button>
-          </Box>
-        </form>
-      </Paper>
-    </main>
+            </Box>
+          </form>
+        </Paper>
+      </main>
+    </div>
   );
 };
 
