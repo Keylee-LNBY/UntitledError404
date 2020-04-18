@@ -22,3 +22,17 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Expo Stuff to Ignore
+.expo/
+/.expo/*
+# Expo Web
+/web-build/*
+/web-report/*
+# Expo Native
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
