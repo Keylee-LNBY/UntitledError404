@@ -1,70 +1,92 @@
-import React from "react";
-import { AppContext, Stage } from "react-pixi-fiber";
-import CharacterRunning from "../utils/characterRunning";
-import GameBackground from "../utils/gameBackground";
-import Obst from "../utils/obst";
-import Item from "../utils/items";
-import * as GameOptions from "../utils/gameOptions";
+import React from "react"
+import Iframe from 'react-iframe'
 
+const Game = () => {
+    return (   
+      <Iframe url= "../utils/snakeGame"
+        width="450px"
+        height="450px"
+        display="initial"
+        position="relative"/>
+    )
 
-export default ({
-  status,
-  isItemVisible,
-  catchItem,
-  stopGame,
-  setObstX,
-  setCurrentPlayerY,
-  setItemX
-}) => {
-  return (
-    <Stage
-      width={GameOptions.width}
-      height={GameOptions.height}
-      gameOptions={{ backgroundColor: 0x1099bb }}
-      interactive
-    >
-      <AppContext.Consumer>
-        {app => {
-          if (status === "stop") {
-            app.stop();
-          } else {
-            app.start();
-          }
-          return (
-            <>
-              <GameBackground
-                app={app}
-                length={1286}
-                texture="background.jpg"
-                y={0}
-                speed={10}
-              />
-              <GameBackground
-                app={app}
-                length={1003}
-                texture="ground.jpg"
-                y={GameOptions.yAxisFloor}
-                speed={15}
-              />
-              <Obst app={app} onChangeX={setObstX} />
-              <Item
-                app={app}
-                visible={isItemVisible}
-                onChangeX={setItemX}
-              />
-              <CharacterRunning
-                app={app}
-                stopGame={stopGame}
-                status={status}
-                setCurrentPlayerY={setCurrentPlayerY}
-              />
-            </>
-          );
-        }}
-      </AppContext.Consumer>
-    </Stage>
-  );
 };
+
+export default Game;
+
+
+
+
+
+
+
+// import React from "react";
+// import { AppContext, Stage } from "react-pixi-fiber";
+// import CharacterRunning from "../utils/characterRunning";
+// import GameBackground from "../utils/gameBackground";
+// import Obst from "../utils/obst";
+// import Item from "../utils/items";
+// import * as GameOptions from "../utils/gameOptions";
+
+
+// export default ({
+//   status,
+//   isItemVisible,
+//   catchItem,
+//   stopGame,
+//   setObstX,
+//   setCurrentPlayerY,
+//   setItemX
+// }) => {
+//   return (
+//     <Stage
+//       width={GameOptions.width}
+//       height={GameOptions.height}
+//       gameOptions={{ backgroundColor: 0x1099bb }}
+//       interactive
+//     >
+//       <AppContext.Consumer>
+//         {app => {
+//           if (status === "stop") {
+//             app.stop();
+//           } else {
+//             app.start();
+//           }
+//           return (
+//             <>
+//               <GameBackground
+//                 app={app}
+//                 length={1286}
+//                 texture="background.jpg"
+//                 y={0}
+//                 speed={10}
+//               />
+//               <GameBackground
+//                 app={app}
+//                 length={1003}
+//                 texture="ground.jpg"
+//                 y={GameOptions.yAxisFloor}
+//                 speed={15}
+//               />
+//               <Obst app={app} onChangeX={setObstX} />
+//               <Item
+//                 app={app}
+//                 visible={isItemVisible}
+//                 onChangeX={setItemX}
+//               />
+//               <CharacterRunning
+//                 app={app}
+//                 stopGame={stopGame}
+//                 status={status}
+//                 setCurrentPlayerY={setCurrentPlayerY}
+//               />
+//             </>
+//           );
+//         }}
+//       </AppContext.Consumer>
+//     </Stage>
+//   );
+// };
 
 
 

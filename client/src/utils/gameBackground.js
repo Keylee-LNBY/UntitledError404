@@ -1,35 +1,35 @@
-import React from "react";
-import AnimatedSprite from "../components/AnimatedSprite";
+// import React from "react";
+// import AnimatedSprite from "../components/AnimatedSprite";
 
-class GameBackground extends React.Component {
+// class GameBackground extends React.Component {
 
-  shouldComponentUpdate() {
-    return false;
-  }
+//   shouldComponentUpdate() {
+//     return false;
+//   }
 
-  render() {
-    const { texture, length, speed, app, y } = this.props;
-    return (
-      <>
-        <AnimatedSprite
-          app={app}
-          y={y}
-          res={texture}
-          shift={0}
-          length={length}
-          speed={speed}
-        />
-        <AnimatedSprite
-          app={app}
-          y={y}
-          res={texture}
-          shift={length}
-          length={length}
-          speed={speed}
-        />
-      </>
-    );
-  }
-}
+//   render() {
+//     const { texture, length, speed, app, y } = this.props;
+//     return (
+//       <>
+//         <AnimatedSprite
+//           app={app}
+//           y={y}
+//           res={texture}
+//           shift={0}
+//           length={length}
+//           speed={speed}
+//         />
+//         <AnimatedSprite
+//           app={app}
+//           y={y}
+//           res={texture}
+//           shift={length}
+//           length={length}
+//           speed={speed}
+//         />
+//       </>
+//     );
+//   }
+// }
 
-export default GameBackground;
+// export default GameBackground;

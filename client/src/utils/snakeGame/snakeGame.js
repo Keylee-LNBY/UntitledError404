@@ -8,12 +8,11 @@ let score = 0;
 
 //When the page loads create teh pixi stage and append it to the page
 window.onload = () => {
-        app = new PIXI.stage(
+        app = new PIXI.Application(
             {
                 width: 800,
                 height: 600,
-                background: 0x000000,
-                view: canvas
+                background: 0xAAAAAA,
             }
         );
         //Appends the PIXI Stage element to the stage
@@ -23,14 +22,14 @@ window.onload = () => {
         //Create the player & the items the player is after
 
         //Player Object
-        player = new PIXI.Sprite.from("./player.png");
+        player = new PIXI.Sprite.from("../../public/player.png");
         player.anchor.set(0.5);
         player.x = 0;
         player.y = app.view.width /2;
         app.stage.addChild(player);
 
         //Item Object
-        item = new PIXI.Sprite.from("./item.png");
+        item = new PIXI.Sprite.from("../../public/item.png");
         item.anchor.set(0.5);
         item.x = Math.floor(Math.random() * app.view.width);
         item.y = Math.floor(Math.random() * app.view.width);
