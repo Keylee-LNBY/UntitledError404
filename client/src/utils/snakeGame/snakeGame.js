@@ -11,8 +11,8 @@ let keys = {};
 window.onload = () => {
     app = new PIXI.Application(
         {
-            width: 800,
-            height: 600,
+            width: window.innerWidth,
+            height: window.innerHeight,
             background: 0x000000,
         }
     );
