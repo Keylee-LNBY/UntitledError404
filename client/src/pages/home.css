@@ -27,20 +27,42 @@ h2 {
     padding-top: 25px;
 }
 
+#highScoreBtn {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #5f0f4e;
+  color: white;
+  font-family: 'Audiowide', cursive;
+}
+
+.list-group-item {
+  background-color: transparent!important;
+  border-color: #5f0f4e;
+  border-width: 2px;
+  border-style: groove;
+}
+
+
 @media (min-width: 648px) {
-
-    .makeStyles-paper-2 {
-        padding: 48px 32px;
-        margin-top: 0px!important;
-    }
-    
-    .makeStyles-layout-135 {
-        background-color: transparent!important;
-    }
-
-    .MuiPaper-elevation2 {
-        box-shadow: 0px!important;
-    }
+  
+  .makeStyles-paper-2 {
+    padding: 48px 32px;
+    margin-top: 0px!important;
+  }
+  
+  .makeStyles-layout-135 {
+    background-color: transparent!important;
+  }
+  
+  .MuiPaper-elevation2 {
+    box-shadow: 0px!important;
+  }
+  .MuiPaper-root {
+    box-shadow: 0px!important;
+  }
+  .MuiPaper-elevation1 {
+    box-shadow: 0px!important;
+  }
 }
 
 @media (min-width: 648px) {
@@ -68,6 +90,9 @@ h2 {
     background-color: transparent!important;
     border-radius: 0vh!important;
 }
+.MuiPaper-elevation1 {
+  box-shadow: none!important;
+}
 
 .makeStyles-paper-169 {
     margin-top: 0px!important;
@@ -81,8 +106,8 @@ h2 {
 }
 
 .bg-dark {
-    /* background-image: linear-gradient(to left, #67aeca, #9066d3); */
-    background-image: linear-gradient(to right, #ec5d92, #5f0f4e );
+    background-image: linear-gradient(to left, #67aeca, #9066d3);
+    /* background-image: linear-gradient(to right, #ec5d92, #5f0f4e ); */
 }
 
 .bubbles {

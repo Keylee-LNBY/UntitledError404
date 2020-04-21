@@ -33,6 +33,10 @@ const UserSchema = new Schema({
     default: Date.now
   },
 
+  // highscore: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "highscore"
+  // }
 
 });
 

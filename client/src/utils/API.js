@@ -5,7 +5,7 @@ export default {
     getScores: function () {
         return axios.get("/api/score/");
     },
-    // Gets the score with the given id
+    // Gets the score with the given id (id is placeholder for real id)
     getScore: function (id) {
         return axios.get("/api/score/" + id);
     },
