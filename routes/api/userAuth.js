@@ -35,9 +35,9 @@ router.get("/", (req, res, next) => {
     console.log("===== user!!======");
     // console.log(req);
     console.log("req.user", req.user);
-    console.log("req.body", req.body);
-    console.log("req.user.username", req.user.username);
-    console.log("req.password", req.password);
+    // console.log("req.body", req.body);
+    // console.log("req.user.username", req.user.username);
+    // console.log("req.password", req.password);
     if (req.user) {
         res.json({ user: req.user });
         console.log(req.user);

@@ -3,33 +3,49 @@ const db = require("../models");
 // Defining methods for the scoreController
 module.exports = {
   findAll: function (req, res) {
-    db.Score.find({ username: req.user })
+    db.Score.find({})
       .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
+      .then(score => {
+        console.log("scores", score);
+        return res.json(score)
+      })
       .catch(err => {
         console.log("err", err);
         return res.status(422).json(err);
       });
   },
   findById: function (req, res) {
-    db.Score.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+    console.log("req.user", req.user);
+    db.Score.findById(req.user._id)
+      .then(scores => {
+        return res.json(scores)
+        console.log("scores", scores);
+      })
       .catch(err => res.status(422).json(err));
   },
+  // works, don't touch!!
   create: function (req, res) {
-    db.Score.create({ ...req.body, username: req.user })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    var scoreObj = {
+      userId: req.user._id,
+      score: req.body.score,
+      username: req.user.username,
+    }
+    db.Score.create(scoreObj)
+      .then(scores => res.json(scores))
+      .catch(err => {
+        console.log(err)
+        res.status(422).json(err)
+      });
   },
   update: function (req, res) {
     db.Score.findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(scores => res.json(scores))
       .catch(err => res.status(422).json(err));
   },
   remove: function (req, res) {
     db.Score.findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
+      .then(scores => scores.remove())
+      .then(scores => res.json(scores))
       .catch(err => res.status(422).json(err));
   }
 };
