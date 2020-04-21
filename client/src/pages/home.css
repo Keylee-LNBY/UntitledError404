@@ -106,8 +106,8 @@ h2 {
 }
 
 .bg-dark {
-    /* background-image: linear-gradient(to left, #67aeca, #9066d3); */
-    background-image: linear-gradient(to right, #ec5d92, #5f0f4e );
+    background-image: linear-gradient(to left, #67aeca, #9066d3);
+    /* background-image: linear-gradient(to right, #ec5d92, #5f0f4e ); */
 }
 
 .bubbles {
