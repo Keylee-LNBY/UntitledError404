@@ -25,6 +25,7 @@ p {
 h2 {
     margin: 20px, 5px, 20px, 5px;
     padding-top: 25px;
+    font-family: 'Audiowide', cursive!important;
 }
 
 #highScoreBtn {
@@ -40,6 +41,16 @@ h2 {
   border-color: #5f0f4e;
   border-width: 2px;
   border-style: groove;
+  font-family: 'Audiowide', cursive!important;
+}
+.MuiTypography-root {
+  font-family: 'Audiowide', cursive!important;
+}
+.MuiTypography-h4 {
+  font-family: 'Audiowide', cursive!important;
+}
+.MuiTypography-gutterBottom {
+  font-family: 'Audiowide', cursive!important;
 }
 
 
@@ -48,20 +59,31 @@ h2 {
   .makeStyles-paper-2 {
     padding: 48px 32px;
     margin-top: 0px!important;
+    font-family: 'Audiowide', cursive!important;
   }
   
   .makeStyles-layout-135 {
     background-color: transparent!important;
+    font-family: 'Audiowide', cursive!important;;
   }
   
   .MuiPaper-elevation2 {
     box-shadow: 0px!important;
+    font-family: 'Audiowide', cursive!important;
   }
   .MuiPaper-root {
     box-shadow: 0px!important;
+    font-family: 'Audiowide', cursive!important;
   }
   .MuiPaper-elevation1 {
     box-shadow: 0px!important;
+    font-family: 'Audiowide', cursive!important;
+  }
+  .MuiBox-root {
+    font-family: 'Audiowide', cursive!important;
+  }
+  .MuiBox-root-284 {
+    font-family: 'Audiowide', cursive!important;
   }
 }
 
@@ -69,6 +91,7 @@ h2 {
     .makeStyles-paper-169 {
         padding: 48px 32px;
         margin-top: 0px!important;
+        font-family: 'Audiowide', cursive!important;
     }
     
     .MuiPaper-root {
@@ -76,33 +99,47 @@ h2 {
         transition: none!important;
         box-shadow: 0px!important;
         color: white!important;
+        font-family: 'Audiowide', cursive!important;
     } 
+    .MuiBox-root {
+      font-family: 'Audiowide', cursive!important;
+    }
+    .MuiBox-root-284 {
+      font-family: 'Audiowide', cursive!important;
+    }
 }
 .makeStyles-paper-2 {
     background-color: transparent!important;
     margin-top: 0px!important;
+    font-family: 'Audiowide', cursive!important;
 }
 .MuiPaper-elevation2 {
     background-color: transparent!important;
     box-shadow: none!important;
+    font-family: 'Audiowide', cursive!important;
 }
 .MuiPaper-rounded {
     background-color: transparent!important;
     border-radius: 0vh!important;
+    font-family: 'Audiowide', cursive!important;
 }
 .MuiPaper-elevation1 {
   box-shadow: none!important;
+  font-family: 'Audiowide', cursive!important;
 }
 
 .makeStyles-paper-169 {
     margin-top: 0px!important;
+    font-family: 'Audiowide', cursive!important;
 }
 
 .MuiButton-containedPrimary {
     background-color: #5f0f4e!important;
+    font-family: 'Audiowide', cursive!important;
 }
 .MuiFormLabel-root {
     color: white!important;
+    font-family: 'Audiowide', cursive!important;
 }
 
 .bg-dark {

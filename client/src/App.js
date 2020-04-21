@@ -47,7 +47,7 @@ function App() {
           <Route exact path="/score" component={Score} />
           <Route exact path="/signUp" component={Register} />
           {/* take home for anything else */}
-          <Route component={Home} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </div>
     </Router>

@@ -56,7 +56,7 @@ const Login = () => {
           window.location.assign("/");
         })
         .catch(e => {
-          console.log("error!", e);
+          alert("Error! Invalid Email or Password", e);
         });
     }
   };
@@ -86,7 +86,7 @@ const Login = () => {
             required
             fullWidth
             id="username"
-            label="username "
+            label="Email"
             name="username"
             autoComplete="username"
             autoFocus
