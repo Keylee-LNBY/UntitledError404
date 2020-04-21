@@ -1,5 +1,29 @@
-import React, { useEffect } from "react"
-import * as PIXI from "pixi.js"
+import React, { useEffect } from "react";
+import * as PIXI from "pixi.js";
+import {Howl, Howler} from 'howler';
+import soundfile1 from "../audio/80s_vibe.webm";
+import soundfile2 from "../audio/zapSplat.mp3";
+import soundfile3 from "../audio/goodImpact.wav";
+
+const backgroundSound = new Howl({
+    src: [soundfile1],
+    autoplay: true,
+    loop: true,
+});
+
+Howler.volume(0.4);
+
+const impactSound = new Howl({
+    src: [soundfile2],
+    volume: 0.6,
+    loop: false
+});
+
+const goodImpact = new Howl({
+    src:[soundfile3],
+    volume: 0.6,
+    loop: false
+})
 
 // let snake = () => {
   let app;
@@ -40,6 +64,8 @@ import * as PIXI from "pixi.js"
       }
 
       if(rectsIntersect(player, item)) {
+          //impact sound
+          goodImpact.play();
           //Add one point to the scoreDiv
           score++;
           //Code that triggers a new item appearing somewhere on the screen
@@ -49,6 +75,8 @@ import * as PIXI from "pixi.js"
       }
 
       if(rectsIntersect(player, enemy)) {
+        //impact sound
+        impactSound.play();
         //Code that triggers a new item appearing somewhere on the screen
         drawScore(score);
         //Move the Item to a new random position
@@ -111,6 +139,7 @@ import * as PIXI from "pixi.js"
 
 const Game = () => {
   
+    backgroundSound.play();
     //When the page loads create teh pixi stage and append it to the page
     useEffect (() => {
         app = new PIXI.Application(
