@@ -1,8 +1,7 @@
-import React from "react"
+import React, { useEffect } from "react"
 import * as PIXI from "pixi.js"
 
-
-let snake = () => {
+// let snake = () => {
   let app;
   let player;
   let item;
@@ -13,58 +12,6 @@ let snake = () => {
   let keysDiv;
   let keys = {};
   // let bg;
-
-  //When the page loads create teh pixi stage and append it to the page
-  window.onload = () => {
-      app = new PIXI.Application(
-          {
-              width: 500,
-              height: 500,
-              background: 0x000000,
-          }
-      );
-      //Appends the PIXI Stage element to the stage
-      document.querySelector(".container").appendChild(app.view);   
-
-      // app.loader.baseUrl = "public";
-      // app.loader.add("background", "background.jpg")
-      // app.loader.onComplete.add(initLevel);
-      // app.loader.load();
-
-      //Player Object
-      player = new PIXI.Sprite.from("./player.png");
-      player.anchor.set(0.5);
-      player.x = app.view.width /2;
-      player.y = app.view.height /2;
-
-      app.stage.addChild(player);
-
-      //Item Object
-      item = new PIXI.Sprite.from("./item.png");
-      item.anchor.set(0);
-      item.x = Math.floor(Math.random() * app.view.width);
-      item.y = Math.floor(Math.random() * app.view.height);
-
-      app.stage.addChild(item);
-
-      //Enemy Object
-      enemy = new PIXI.Sprite.from("./obstError.png");
-      enemy.anchor.set(0);
-      enemy.x = Math.floor(Math.random() * app.view.width);
-      enemy.y = Math.floor(Math.random() * app.view.height);
-
-      app.stage.addChild(enemy);
-
-      //Keyboard Event Handlers
-      window.addEventListener("keydown", keysDown);
-      window.addEventListener("keyup", keysUp);
-
-      //PIXI ticker for game loop - Start the game 
-      app.ticker.add(gameLoop);
-      keysDiv = document.querySelector('#keys');
-      // scoreDiv = document.querySelector('#scoreBoard');
-      score = 0;
-  };
 
   // const initLevel = () => {
   //   bg = createBG(app.loader.resources["background"].texture);
@@ -158,13 +105,68 @@ let snake = () => {
     //   return tiling;
     // };
 
-}
+// }
+
 
 
 const Game = () => {
-  // window.onload() {
+  
+    //When the page loads create teh pixi stage and append it to the page
+    useEffect (() => {
+        app = new PIXI.Application(
+            {
+                width: 500,
+                height: 500,
+                background: 0x000000,
+            }
+        );
+        //Appends the PIXI Stage element to the stage
+        document.querySelector("#gameContainer").appendChild(app.view);   
+  
+        // app.loader.baseUrl = "public";
+        // app.loader.add("background", "background.jpg")
+        // app.loader.onComplete.add(initLevel);
+        // app.loader.load();
+  
+        //Player Object
+        player = new PIXI.Sprite.from("./player.png");
+        player.anchor.set(0.5);
+        player.x = app.view.width /2;
+        player.y = app.view.height /2;
+  
+        app.stage.addChild(player);
+  
+        //Item Object
+        item = new PIXI.Sprite.from("./item.png");
+        item.anchor.set(0);
+        item.x = Math.floor(Math.random() * app.view.width);
+        item.y = Math.floor(Math.random() * app.view.height);
+  
+        app.stage.addChild(item);
+  
+        //Enemy Object
+        enemy = new PIXI.Sprite.from("./obstError.png");
+        enemy.anchor.set(0);
+        enemy.x = Math.floor(Math.random() * app.view.width);
+        enemy.y = Math.floor(Math.random() * app.view.height);
+  
+        app.stage.addChild(enemy);
+  
+        //Keyboard Event Handlers
+        window.addEventListener("keydown", keysDown);
+        window.addEventListener("keyup", keysUp);
+  
+        //PIXI ticker for game loop - Start the game 
+        app.ticker.add(gameLoop);
+        keysDiv = document.querySelector('#keys');
+        // scoreDiv = document.querySelector('#scoreBoard');
+        score = 0;
+    },
+    []
+    );
+
     return (   
-      <div dangerouslySetInnerHTML={snake()} />
+      <div id="gameContainer"/>
     )
 };
 
