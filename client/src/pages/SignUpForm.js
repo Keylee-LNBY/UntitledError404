@@ -124,7 +124,7 @@ const Register = () => {
               required
               fullWidth
               id="username"
-              label="username"
+              label="Email"
               name="username"
               autoComplete="username"
               defaultValue={userInput.username}
