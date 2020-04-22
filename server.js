@@ -34,6 +34,10 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
+//Mongo Heroku Connection
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/untitled";
+mongoose.connect(MONGODB_URI);
+
 
 // Start the API server
 app.listen(PORT, function () {
