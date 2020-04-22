@@ -5,13 +5,25 @@ import soundfile1 from "../audio/80s_vibe.webm";
 import soundfile2 from "../audio/zapSplat.mp3";
 import soundfile3 from "../audio/goodImpact.wav";
 
-const backgroundSound = new Howl({
+const gameSound = new Howl({
     src: [soundfile1],
-    autoplay: true,
     loop: true,
 });
 
 Howler.volume(0.4);
+
+const playMusic = () =>{
+    // if(gameSound.play()===true){
+    //     gameSound.stop();
+    //     console.log("stopped old music");
+    // }
+    gameSound.play();
+};
+
+const pauseBtn = () =>{
+    gameSound.pause();
+    console.log("paused music");
+};
 
 const impactSound = new Howl({
     src: [soundfile2],
@@ -80,8 +92,11 @@ const goodImpact = new Howl({
         //Code that triggers a new item appearing somewhere on the screen
         drawScore(score);
         //Move the Item to a new random position
-        player = 0;
-        enemy = 0;
+        // player = 0;
+        // enemy = 0;
+        setPosition(player);
+        setPosition(enemy);
+        score = 0;
 
         // return (`Your Loss. Score: ${score}.`)
     }
@@ -138,8 +153,8 @@ const goodImpact = new Howl({
 
 
 const Game = () => {
+    playMusic();
   
-    backgroundSound.play();
     //When the page loads create teh pixi stage and append it to the page
     useEffect (() => {
         app = new PIXI.Application(
@@ -148,9 +163,12 @@ const Game = () => {
                 height: 500,
                 background: 0x000000,
             }
+            
+
         );
         //Appends the PIXI Stage element to the stage
         document.querySelector("#gameContainer").appendChild(app.view);   
+        
   
         // app.loader.baseUrl = "public";
         // app.loader.add("background", "background.jpg")
@@ -195,7 +213,9 @@ const Game = () => {
     );
 
     return (   
-      <div id="gameContainer"/>
+      <div id="gameContainer">
+      <button id="pauseBtn" onClick={()=> pauseBtn()}>Pause Music</button>
+      </div>
     )
 };
 

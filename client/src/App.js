@@ -10,6 +10,7 @@ import Score from "./pages/Score";
 import Register from "./pages/SignUpForm";
 import API from "./utils/API";
 import Bubbles from "./components/Bubbles";
+import {Howl, Howler} from 'howler';
 
 // NavBar on top => used to click between "pages"
 // /game => Game 
@@ -28,9 +29,11 @@ function App() {
         }
       })
       .catch(e => {
-        console.log('error', e)
-      })
-  })
+        console.log('error', e);
+      });
+  });
+
+
 
   return (
     <Router>
